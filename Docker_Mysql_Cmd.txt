@@ -1,0 +1,11 @@
+docker network create spring-net
+
+docker run -p 3307:3306 --name mysqldb --network spring-net -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=bootdb -d mysql:8
+
+docker image build -t employeedocker . -f DockerFile
+
+docker container run --network spring-net --name emp-container -p 8090:8080 -d employeedocker
+
+docker container exec -it mysqldb bash
+
+create table employee(empId varchar(30),empName varchar(30));
