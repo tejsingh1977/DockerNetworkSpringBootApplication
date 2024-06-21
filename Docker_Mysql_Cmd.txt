@@ -8,4 +8,6 @@ docker container run --network spring-net --name emp-container -p 8090:8080 -d e
 
 docker container exec -it mysqldb bash
 
+mysql -uroot -proot
+
 create table employee(empId varchar(30),empName varchar(30));
